@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to Movie Magic</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('/static/bg.jpg'); 
+      color: #fff;
+      text-align: center;
+    }
+
+    .top-nav {
+      background-color: #222;
+      padding: 10px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: white;
+      margin: 0 15px;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
+
+    .top-nav a:hover {
+      background-color: #333;
+      border-radius: 4px;
+    }
+
+    .content {
+      padding: 100px 20px 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      color: white;
+      background: #e50914;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .buttons a:hover {
+      background: #b00610;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ Top Navigation Bar -->
+  <div class="top-nav">
+    <a href="{{ url_for('index') }}">HOME</a>
+    <a href="{{ url_for('about') }}">ABOUT</a>
+    <a href="{{ url_for('services') }}">SERVICES</a>
+  </div>
+
+  <!-- ✅ Main Content -->
+  <div class="content">
+    <h1>🎥 Welcome to Movie Magic</h1>
+    <p>Your gateway to blockbuster experiences!</p>
+    <div class="buttons">
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}">Register</a>
+    </div>
+  </div>
+</body>
+</html>

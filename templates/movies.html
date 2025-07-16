@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎬 Now Showing</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('/static/movies-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .movie-card {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            width: 220px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .movie-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .movie-card h3 {
+            margin: 15px 0 5px;
+        }
+
+        .movie-card p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .movie-card a {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #e50914;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .movie-card a:hover {
+            background-color: #c40810;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎬 Now Showing</h1>
+        <nav>
+            <a href="{{ url_for('dashboard') }}">📋 Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <div class="movie-list">
+    {% for movie in movies %}
+    <div class="movie-card">
+        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+        <h3>{{ movie.title }}</h3>
+        <p>₹{{ movie.price }}</p>
+        <a href="{{ url_for('book_movie', movie_id=movie.id) }}">Book Now</a>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>

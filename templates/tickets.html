@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>🎟️ My Tickets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .no-tickets {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+        }
+
+        .actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .actions a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 15px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .actions a:hover {
+            background-color: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎟️ My Tickets</h1>
+        <nav>
+            <a href="{{ url_for('movies_list') }}">Book Another</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    {% if tickets %}
+    <table>
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Seats</th>
+                <th>Price per Ticket</th>
+                <th>Total Price</th>
+                <th>Booking Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.movie }}</td>
+                <td>{{ ticket.seats.replace(',', ' ') }}</td>
+                <td>₹{{ ticket.price }}</td>
+                <td>₹{{ ticket.total_price }}</td>
+                <td>{{ ticket.booking_date.strftime('%Y-%m-%d %H:%M:%S') if ticket.booking_date else "N/A" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="no-tickets">
+        <p>No tickets booked yet.</p>
+    </div>
+    {% endif %}
+</body>
+</html>
