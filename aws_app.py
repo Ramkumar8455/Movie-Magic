@@ -200,4 +200,4 @@ def open_browser():
 
 if __name__ == '__main__':
     threading.Timer(1.25, open_browser).start()
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
