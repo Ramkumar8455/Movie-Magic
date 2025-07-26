@@ -13,7 +13,7 @@ app.secret_key = 'aws_secret_key_here'
 AWS_REGION = 'us-east-1'
 USERS_TABLE = 'fixitnow_user'
 BOOKINGS_TABLE = 'fixitnow_service'
-SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:604665149129:fixitnow_Topic"
+SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:145023099836:MovieTicketNotifications:b094f83f-6707-411e-962e-2ad0549a0a98"
 
 dynamodb = boto3.resource('dynamodb', region_name=AWS_REGION)
 sns_client = boto3.client('sns', region_name=AWS_REGION)
